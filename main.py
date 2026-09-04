@@ -45,5 +45,6 @@ async def oauth_callback(payload: CallbackRequest):
 
 
 @app.get("/")
+@app.head("/")
 async def health():
     return {"status": "ok"}
