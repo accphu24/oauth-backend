@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(title="OAuth Backend", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -47,4 +47,4 @@ async def oauth_callback(payload: CallbackRequest):
 @app.get("/")
 @app.head("/")
 async def health():
-    return {"status": "ok"}
+    return {"status": "ok", "version": app.version}
